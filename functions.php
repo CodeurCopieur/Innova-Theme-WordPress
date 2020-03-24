@@ -46,3 +46,5 @@ function load_stylessheets(){
 
 add_action('wp_enqueue_scripts', 'load_stylessheets');
 
+add_image_size('product_image_small', 400, 400, false);
+add_image_size('product_image_large', 700, 700, false);
