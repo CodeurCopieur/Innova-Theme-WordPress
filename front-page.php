@@ -13,9 +13,6 @@ $hero = get_field('hero');  ?>
   </div>
 
 
-     
-
-
       <?php if( have_rows('services') ): ?>
           <div class="section">
             <div class="container">
@@ -45,18 +42,55 @@ $hero = get_field('hero');  ?>
 
           <?php endif; ?>
 
+
+
+
   <div class="section portfolio-section">
+  <?php   $head_works = get_field('head_works');  ?>
     <div class="container">
       <div class="row mb-5 justify-content-center" data-aos="fade-up">
         <div class="col-md-8 text-center">
-          <h2 class="mb-4 section-title">Selected Work</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis accusamus perferendis
-            libero accusantium nisi.</p>
+          <h2 class="mb-4 section-title"><?php echo $head_works['medium_title']; ?></h2>
+          <p><?php echo $head_works['texte']; ?></p>
         </div>
       </div>
     </div>
-    <div class="container">
-      <div class="row mb-5 no-gutters">
+
+
+
+                <?php if( have_rows('projets') ): ?>
+
+                  <div class="container">
+                  <div class="row mb-5 no-gutters">
+
+                <?php while( have_rows('projets') ): the_row(); 
+
+                  // vars
+                  $image = get_sub_field('image_projet');
+                  $categorie = get_sub_field('categorie_projet');
+                  $title = get_sub_field('titre_projet');
+
+                  ?>
+                      
+                    <div class="col-sm-6 col-md-6 col-lg-6" data-aos="fade" data-aos-delay="100">
+                        <a href="portfolio-single.html" class="work-thumb">
+                          <div class="work-text">
+                            <h2><?php echo $title; ?></h2>
+                            <p><?php echo $categorie; ?></p>
+                          </div>
+                          <img src="<?php echo $image['url']; ?>" alt="Image" class="img-fluid">
+                        </a>
+                      </div>
+
+                <?php endwhile; ?>
+
+                </div>
+              </div>
+
+          <?php endif; ?>
+
+
+      <!--
         <div class="col-sm-6 col-md-6 col-lg-6" data-aos="fade" data-aos-delay="100">
           <a href="portfolio-single.html" class="work-thumb">
             <div class="work-text">
@@ -95,11 +129,9 @@ $hero = get_field('hero');  ?>
             </div>
             <img src="<?php bloginfo('template_directory');?>/images/work_4.jpg" alt="Image" class="img-fluid">
           </a>
-        </div>
+        </div>-->
 
-      </div>
-      
-    </div>
+
   </div>
 
   <div class="section bg-light block-11">
