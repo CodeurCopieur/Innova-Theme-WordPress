@@ -78,7 +78,7 @@ $hero = get_field('hero');  ?>
                             <h2><?php echo $title; ?></h2>
                             <p><?php echo $categorie; ?></p>
                           </div>
-                          <img src="<?php echo $image['sizes']['product_image_small']; ?>" alt="Image" class="img-fluid">
+                          <img src="<?php echo $image['url']; ?>" alt="Image" class="img-fluid">
                         </a>
                       </div>
 
@@ -149,24 +149,28 @@ $hero = get_field('hero');  ?>
   <!-- END .block-4 -->
   </div>
 
-
+  <?php $about = get_field('about_us');  ?>
   <div class="section">
     <div class="container">
       <div class="row">
         
         <div class="col-lg-6 ml-auto pl-lg-4 mb-5 order-2">
 
-          <img src="<?php bloginfo('template_directory');?>/images/about_2.jpg" alt="Image" class="img-fluid mb-5">
+          <img src="<?php echo $about['image_right']['url']; ?>" alt="Image" class="img-fluid mb-5">
           
-          <span class="d-block text-uppercase text-primary">About US</span>
-          <h2 class="mb-4 section-title">Creative We Grow</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id autem temporibus blanditiis accusamus perferendis libero accusantium nisi itaque tempore, harum aliquid aut, sapiente dolor tenetur.</p>
-          <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus.</p>
-          <p><a href="#" class="btn btn-outline-black">Learn More</a></p>
+          <span class="d-block text-uppercase text-primary"><?php echo $about['petit_titre']; ?></span>
+          <h2 class="mb-4 section-title"><?php echo $about['titre']; ?></h2>
+          <p><?php echo $about['description']; ?></p>
+       <!--   <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus.</p>-->
+          <p>
+            <?php if( $about['link'] ): ?>
+                <a href="<?php echo $about['link']; ?>" class="btn btn-outline-black"><?php echo $about['texte_link']; ?></a>
+            <?php endif; ?>
+          </p>
         </div>
         <div class="col-lg-6 order-1">
           <figure class="img-dotted-bg">
-            <img src="<?php bloginfo('template_directory');?>/images/about_1.jpg" alt="Image" class="img-fluid">
+            <img src="<?php echo $about['image_left']['url']; ?>" alt="Image" class="img-fluid">
           </figure>
 
         </div>
